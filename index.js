@@ -118,15 +118,82 @@
 
 // Асинхронные функции
 
-console.log('Start');
-console.log('Start 2');
-function timeout2sec() {
-    console.log('2 SEC');
-}
-window.setTimeout(function () {
-    console.log('Inside timeout after 1 sec');
-}, 1000);
-console.log('End');
+// console.log('Start');
+// console.log('Start 2');
+// function timeout2sec() {
+//     console.log('2 SEC');
+// }
+// window.setTimeout(function () {
+//     console.log('Inside timeout after 1 sec');
+// }, 1000);
+// console.log('End');
+//
+// setTimeout(timeout2sec, 2000); // не вызывать функцию
+//
 
-setTimeout(timeout2sec, 2000); // не вызывать функцию
+// Promise
 
+// console.log('Request data');
+
+// setTimeout(() => {
+//     console.log('Prepering data...');
+//     const backendData = {
+//         server: 'aws',
+//         port: 2000,
+//         status: 'working'
+//     };
+//     setTimeout(() => {
+//         backendData.modified = true;
+//         console.log('Data received', backendData)
+//     }, 2000);
+// }, 2000);
+
+// const p = new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//         console.log('Prepering data...');
+//         const backendData = {
+//             server: 'aws',
+//             port: 2000,
+//             status: 'working'
+//         };
+//         resolve(backendData);
+//     }, 5000);
+// });
+//
+// p
+//     .then(data => {
+//     // console.log('Promise resolved', data);
+//     return new Promise((resolve, reject) => {
+//         setTimeout(() => {
+//             data.modified = true;
+//             resolve(data);
+//             // console.log('Data received', data)
+//         }, 2000);
+//     });
+//     // p2.then(clientData => {
+//     //     console.log('clientData', clientData);
+//     // })
+// })
+//     .then(clientData => {
+//     // console.log('clientData', clientData);
+//     clientData.fromPromise = true;
+//     return clientData;
+// })
+//     .then(data => console.log('Modified data', data))
+//     .catch(err => console.log('Error', err))
+//     .finally(()=> console.log('Finally'));
+
+const sleep = ms => new Promise(resolve => {
+    setTimeout(() => resolve(), ms)
+});
+// sleep(2000).then(() => console.log('After 2 sec'));
+// sleep(3000).then(() => console.log('After 3 sec'));
+// sleep(1000).then(() => console.log('After 1 sec'));
+
+Promise
+    .all([sleep(2000), sleep(5000)]) // ждёт все данные чтоб вывести 5000мс
+    .then(() => console.log('All promises'));
+
+Promise
+    .race([sleep(3000), sleep(5000)]) // отработает первый промис в 3000мс
+    .then(() => console.log('Race promises'));
