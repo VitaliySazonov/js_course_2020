@@ -120,8 +120,13 @@
 
 console.log('Start');
 console.log('Start 2');
-
+function timeout2sec() {
+    console.log('2 SEC');
+}
 window.setTimeout(function () {
     console.log('Inside timeout after 1 sec');
 }, 1000);
 console.log('End');
+
+setTimeout(timeout2sec, 2000); // не вызывать функцию
+
