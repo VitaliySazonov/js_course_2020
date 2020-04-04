@@ -183,17 +183,56 @@
 //     .catch(err => console.log('Error', err))
 //     .finally(()=> console.log('Finally'));
 
-const sleep = ms => new Promise(resolve => {
-    setTimeout(() => resolve(), ms)
-});
+// const sleep = ms => new Promise(resolve => {
+//     setTimeout(() => resolve(), ms)
+// });
 // sleep(2000).then(() => console.log('After 2 sec'));
 // sleep(3000).then(() => console.log('After 3 sec'));
 // sleep(1000).then(() => console.log('After 1 sec'));
 
-Promise
-    .all([sleep(2000), sleep(5000)]) // ждёт все данные чтоб вывести 5000мс
-    .then(() => console.log('All promises'));
+// Promise
+//     .all([sleep(2000), sleep(5000)]) // ждёт все данные чтоб вывести 5000мс
+//     .then(() => console.log('All promises'));
+//
+// Promise
+//     .race([sleep(3000), sleep(5000)]) // отработает первый промис в 3000мс
+//     .then(() => console.log('Race promises'));
 
-Promise
-    .race([sleep(3000), sleep(5000)]) // отработает первый промис в 3000мс
-    .then(() => console.log('Race promises'));
+//Object.create
+
+const person = Object.create(
+    {
+        calculateAge() {
+            console.log('Age: ', new Date().getFullYear() - this.birthyear)
+        }
+    },
+    {
+        name: {
+            value: 'Vito',
+            enumerable: true, // false по-умолчанию. Для того чтоб его было видно в цикле for
+            writable: true, // false по-умолчанию. Разрешает писать/изменять данные
+            configurable: true, //false по-умолчанию. Манипулировать с ключами объекта
+        },
+        birthyear: {
+            value: 1993,
+            writable: false,
+            enumerable: true,
+            configurable: false
+        },
+        age: {
+            get() {
+                return new Date().getFullYear() - this.birthyear;
+            },
+            set(value) {
+                document.body.style.background = 'red';
+                console.log('Set age', value);
+            }
+        }
+    });
+
+// person.name = 'Maxim';
+// hasOwnProperty(key) всегда использовать с for in циклами 
+for (let key in person) {
+    if (person.hasOwnProperty(key)) console.log('Key', key, person[key]);
+
+}
