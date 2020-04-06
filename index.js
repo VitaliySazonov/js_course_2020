@@ -524,3 +524,8 @@
 //     {id: 4, name: 'Joe', job: 'DevOps', age: 28}
 // ]);
 
+// Generators
+
+function* strGenerator() {
+    yield 
+}
