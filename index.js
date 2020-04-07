@@ -558,10 +558,95 @@
 //     }
 // };
 
-function* iter(n = 10) {
-    for (let i = 0; i < n; i++) yield i;
-}
+// function* iter(n = 10) {
+//     for (let i = 0; i < n; i++) yield i;
+// }
+//
+// for (let k of iter(6)) {
+//     console.log(k);
+// }
 
-for (let k of iter(6)) {
-    console.log(k);
-}
+
+// Arrays
+const people = [
+  {name: 'Vito', age: 25, budget: 40000},
+  {name: 'Carl', age: 16, budget: 3400},
+  {name: 'Den', age: 27, budget: 50000},
+  {name: 'Joe', age: 15, budget: 1800},
+  {name: 'Joe', age: 28, budget: 25000},
+  {name: 'Joe', age: 12, budget: 2300},
+];
+// forEach - типа for() или for of
+
+// people.forEach((person, index, pArr) => {
+//   console.log(person);
+//   console.log(index);
+//   console.log(pArr);
+// });
+
+// Map - перебирает массив и не разбивает его, а так же возвращает изменённый массив
+
+// const newPeople = people.map(person => person.age * 3);
+// console.log(newPeople);
+
+// Filter - фильтрует массив и оставляет массив с нужным фильтром
+
+// const adults = [];
+// for (let i = 0; i < people.length; i++) {
+//   if (people[i].age >= 18) {
+//     adults.push(people[i]);
+//   }
+// }
+// console.log(adults);
+// const adults = people.filter(person => person.age >= 18);
+// console.log(adults);
+
+// Reduce
+
+// let amount = 0;
+// for (let i = 0; i < people.length; i++) {
+//   amount += people[i].budget;
+// }
+// console.log(amount);
+// const amount = people.reduce((total, person) => total + person.budget, 0); // 122500
+// console.log(amount);
+
+// Find - находит в массиве инфу
+
+// const igor = people.find(person => person.name === 'Vito');
+// console.log(igor);
+
+// FindIndex - находит индекс лемента в сассиве
+
+// const igorIndex = people.findIndex(person => person.name === 'Den'); // 2
+// console.log(igorIndex);
+const amount = people
+  // filter of people
+  .filter(person => person.budget > 30000)
+  // map -> add to all persons
+  .map(person => {
+    return {
+      info: `${person.name} (${person.age})`,
+      budget: Math.sqrt(person.budget)
+    }
+  })
+  // reduce sum of their budgets
+  .reduce((total, person) => total + person.budget, 0);
+console.log(amount);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
