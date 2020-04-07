@@ -568,14 +568,14 @@
 
 
 // Arrays
-const people = [
-  {name: 'Vito', age: 25, budget: 40000},
-  {name: 'Carl', age: 16, budget: 3400},
-  {name: 'Den', age: 27, budget: 50000},
-  {name: 'Joe', age: 15, budget: 1800},
-  {name: 'Joe', age: 28, budget: 25000},
-  {name: 'Joe', age: 12, budget: 2300},
-];
+// const people = [
+//   {name: 'Vito', age: 25, budget: 40000},
+//   {name: 'Carl', age: 16, budget: 3400},
+//   {name: 'Den', age: 27, budget: 50000},
+//   {name: 'Joe', age: 15, budget: 1800},
+//   {name: 'Joe', age: 28, budget: 25000},
+//   {name: 'Joe', age: 12, budget: 2300},
+// ];
 // forEach - типа for() или for of
 
 // people.forEach((person, index, pArr) => {
@@ -620,33 +620,176 @@ const people = [
 
 // const igorIndex = people.findIndex(person => person.name === 'Den'); // 2
 // console.log(igorIndex);
-const amount = people
-  // filter of people
-  .filter(person => person.budget > 30000)
-  // map -> add to all persons
-  .map(person => {
-    return {
-      info: `${person.name} (${person.age})`,
-      budget: Math.sqrt(person.budget)
-    }
-  })
-  // reduce sum of their budgets
-  .reduce((total, person) => total + person.budget, 0);
-console.log(amount);
+// const amount = people
+//   // filter of people
+//   .filter(person => person.budget > 30000)
+//   // map -> add to all persons
+//   .map(person => {
+//     return {
+//       info: `${person.name} (${person.age})`,
+//       budget: Math.sqrt(person.budget)
+//     }
+//   })
+//   // reduce sum of their budgets
+//   .reduce((total, person) => total + person.budget, 0);
+// console.log(amount);
+
+// Map, Set, WeakMap, WeakSet
+// const obj = {
+//   name: 'Vito',
+//   job: 'Fullstack',
+//   age: 22
+// };
+// const entries = [
+//   ['name', 'Vito'],
+//   ['age', 25],
+//   ['job', 'Fullstack'],
+// ];
+
+// Map -> чтоб получить ключ этого объекта нужно использовать get('')
+
+// console.log(Object.entries(obj)); // переводит объект в массив массивов
+// console.log(Object.fromEntries(entries)); // переводит массив в объект
+// const map = new Map(entries); // тут могут быть любые типы ключей
+// console.log(map.get('name')); // <- обязательно get('name'), чтоб получить значение ключа name
+// map
+//   .set('newField', 42)
+//   .set(obj, 'Value of obj')
+//   .set(NaN, 'NaN ??');
+// console.log(map.get(NaN));
+// map.delete('job');
+// console.log(map.has('job')); // есть ли такой ключ в объекте map // true|false
+// console.log(map.size); // узнать размер объекта // 6
+// map.clear(); // очистить весь объект
+// console.log(map.size); // 0
+
+// ===================
+// for (let [key, value] of map) {
+//   console.log(key, value);
+// }
+
+// for(let val of map.values()) {
+//   console.log(val);
+// }
+//Vito
+// 25
+// Fullstack
+// 42
+// Value of obj
+// NaN ??
+
+// for (let key of map.keys()) {
+//   console.log(key);
+// }
+//name
+// age
+// job
+// newField
+// { name: 'Vito', job: 'Fullstack', age: 22 }
+// NaN
+
+// map.forEach((val, key, map) => {
+//   console.log(key, val);
+// });
+//name Vito
+// age 25
+// job Fullstack
+// newField 42
+// { name: 'Vito', job: 'Fullstack', age: 22 } Value of obj
+// NaN NaN ??
+
+// const array = Array.from(map);
+// const mapObj = Object.fromEntries(map.entries());
+// console.log(mapObj);
+//{
+//   name: 'Vito',
+//   age: 25,
+//   job: 'Fullstack',
+//   newField: 42,
+//   '[object Object]': 'Value of obj',
+//   NaN: 'NaN ??'
+// }
 
 
+// const users = [
+//   {name: 'Vito'},
+//   {name: 'Alex'},
+//   {name: 'Irina'},
+// ];
+//
+// const visits = new Map();
+// visits
+//   .set(users[0], new Date())
+//   .set(users[1], new Date(new Date().getTime() + 1000 + 60))
+//   .set(users[2], new Date(new Date().getTime() + 5000 + 60));
+//
+// function lastVisit (user) {
+//   return visits.get(user);
+// }
+//
+// console.log(lastVisit(users[2]));
+// const set = new Set([1, 2, 3, 4, 4, 4, 5, 5, 6]); // покажет массив без повторений
+// set.add(10).add(20).add(30).add(20); // добавление чисел в массив и при этом они не повторяются в массиве
+// console.log(set);
+// console.log(set.has(42)); // .has() проверка на то что указано в скобках
+// console.log(set.size); // количество елементов в set
+// console.log(set.delete(1)); // удаляет значенеи в set
+// console.log(set.size); //
+// console.log(set.clear()); // очищает set
+// console.log(set.size); //
 
 
+// for (let key of set) {
+//   console.log(key);
+// }
+// function uniqValues (array) {
+//   return [...new Set(array)];
+// }
+//
+// console.log(uniqValues([1, 2, 3, 4, 2, 2, 3, 4, 5, 6, 4, 5, 4, 5]));
 
+// WeakMap
+// let obj = {
+//   name: 'WeakMap',
+// };
+// const arr = [obj];
+// obj = null;
+// console.log(arr[0]);
 
+// const map = new WeakMap([
+//   [obj, 'obj data']
+// ]);
+// +get set delete has || -size
+// obj = null;
+// console.log(map);
 
+// ==================
+// const cache = new WeakMap();
+//
+// function cacheUser (user) {
+//   if (!cache.has(user)) {
+//     cache.set(user, Date.now());
+//   }
+//   return cache.get(user);
+// }
+//
+// let lena = {name: 'Lena'};
+// let alex = {name: 'Alex'};
+// cacheUser(lena);
+// cacheUser(alex);
+// // lena = null;
+// cacheUser(cache.has(lena));
+// cacheUser(cache.has(alex));
+//
+// WeakSet
 
-
-
-
-
-
-
-
-
-
+const users = [
+  {name: 'Vito'},
+  {name: 'Alex'},
+  {name: 'Irina'},
+];
+const visits = new WeakSet();
+visits.add(users[0]).add(users[1]);
+users.splice(1, 1);
+console.log(visits.has(users[0]));
+console.log(visits.has(users[1]));
