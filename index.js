@@ -905,10 +905,44 @@
 // const {name, age, ...address} = person;
 // console.log(name, age, address);
 
+// Destructuration
+function calcValues (a, b) {
+  return [
+    a + b,
+    a - b,
+    a * b,
+    a / b,
+    a + b + 32
+  ]
+}
+
+const [sum, sub = 'No data', mult, ...other] = calcValues(42, 10);
+// const sum = result[0];
+// const sub = result[1];
+// console.log(sum, mult, ...other, sub);
+const person = {
+  name: 'Max',
+  age: 20,
+  address: {
+    country: 'Russia',
+    city: 'Moscow'
+  }
+};
+// const {
+//   name: firstName = `The name isn't found`,
+//   age,
+//   car = 'Car is not found',
+//   address: {city: homeTown, country}
+// } = person;
+// const {name, ...info} = person;
 
 
+// console.log(name, info);
+function logPerson({name = 'Is not very founded', age}) {
+  console.log(name + ' ' + age);
+}
 
-
+logPerson(person);
 
 
 
