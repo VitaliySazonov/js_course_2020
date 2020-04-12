@@ -796,10 +796,10 @@
 
 // Fetch, Ajax, XHR
 
-const requestURL = 'https://jsonplaceholder.typicode.com/users';
+// const requestURL = 'https://jsonplaceholder.typicode.com/users';
 
 
-function sendRequest (method, url, body = null) {
+// function sendRequest (method, url, body = null) {
   // return new Promise((resolve, reject) => {
   //   const xhr = new XMLHttpRequest();
   //   xhr.open(method, url);
@@ -818,34 +818,107 @@ function sendRequest (method, url, body = null) {
   //   };
   //   xhr.send(JSON.stringify(body));
   // });
-  const headers = {
-    'Content-Type': 'application/json'
-  };
-  return fetch(url, {
-    method: method,
-    body: JSON.stringify(body),
-    headers: headers,
-  }).then(response => {
-    if (response.ok) {
-      return response.json();
-    }
-    return response.json().then(error => {
-      const e = new Error('Smth wrong');
-      e.data = error;
-      throw e;
-    });
-  })
-}
-//
-// sendRequest('GET', requestURL)
+//   const headers = {
+//     'Content-Type': 'application/json'
+//   };
+//   return fetch(url, {
+//     method: method,
+//     body: JSON.stringify(body),
+//     headers: headers,
+//   }).then(response => {
+//     if (response.ok) {
+//       return response.json();
+//     }
+//     return response.json().then(error => {
+//       const e = new Error('Smth wrong');
+//       e.data = error;
+//       throw e;
+//     });
+//   })
+// }
+// //
+// // sendRequest('GET', requestURL)
+// //   .then(data => console.log(data))
+// //   .catch(err => console.log(err));
+// const body = {
+//   name: 'Vito',
+//   job: 'Fullstack',
+//   age: 25
+// };
+// sendRequest('POST', requestURL, body)
 //   .then(data => console.log(data))
 //   .catch(err => console.log(err));
-const body = {
-  name: 'Vito',
-  job: 'Fullstack',
-  age: 25
-};
-sendRequest('POST', requestURL, body)
-  .then(data => console.log(data))
-  .catch(err => console.log(err));
+
+// Spread and Rest
+// Spread
+
+// const citiesRussia = ['Moscov', 'Saint-Pierre', 'Kazan', 'Novosibirsk'];
+// const citiesEurope = ['Berlin', 'Prague', 'Paris'];
+// const citiesRussiaWithPopulation = {
+//   Moscow: 20,
+//   SaintPierre: 8,
+//   Kazan: 5,
+//   Novosibirsk: 3
+// };
+// const citiesEuropeWithPopulation = {
+//   Moscow: 26,
+//   Berlin: 10,
+//   Prague: 3,
+//   Paris: 2
+// };
+// console.log(...citiesRussia);
+// console.log(...citiesEurope);
+// const allCities = [...citiesRussia, 'Washington', ...citiesEurope];
+// console.log(allCities);
+// console.log({...citiesRussiaWithPopulation});
+// console.log({...citiesRussiaWithPopulation, ...citiesEuropeWithPopulation});
+
+// Practice
+// const numbers = [5, 37, 42, 17];
+// console.log(Math.max(5, 37, 42, 17));
+// console.log(Math.max(...numbers));
+// console.log(Math.max.apply(null, numbers));
+// const divs = document.querySelectorAll('div');
+// const nodes = [...divs];
+// console.log(nodes);
+// console.log(divs, Array.isArray(divs));
+// console.log(nodes, Array.isArray(nodes));
+
+// Rest
+// function sum (...rest) {
+//   console.log(rest);
+//   return rest.reduce((a, i) => a + i, 0);
+// }
+//
+// const numbers = [1, 2, 3, 4, 5, 7, 8, 9, 10];
+// // console.log(sum(...numbers));
+// // const a = numbers[0];
+// // const b = numbers[1];
+// // const [a, b, ...other] = numbers;
+// // console.log(a, b, other);
+// const person = {
+//   name: 'Max',
+//   age: 20,
+//   city: 'Moscow',
+//   country: 'Russia',
+// };
+// const {name, age, ...address} = person;
+// console.log(name, age, address);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
