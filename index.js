@@ -906,28 +906,28 @@
 // console.log(name, age, address);
 
 // Destructuration
-function calcValues (a, b) {
-  return [
-    a + b,
-    a - b,
-    a * b,
-    a / b,
-    a + b + 32
-  ]
-}
+// function calcValues (a, b) {
+//   return [
+//     a + b,
+//     a - b,
+//     a * b,
+//     a / b,
+//     a + b + 32
+//   ]
+// }
 
-const [sum, sub = 'No data', mult, ...other] = calcValues(42, 10);
+// const [sum, sub = 'No data', mult, ...other] = calcValues(42, 10);
 // const sum = result[0];
 // const sub = result[1];
 // console.log(sum, mult, ...other, sub);
-const person = {
-  name: 'Max',
-  age: 20,
-  address: {
-    country: 'Russia',
-    city: 'Moscow'
-  }
-};
+// const person = {
+//   name: 'Max',
+//   age: 20,
+//   address: {
+//     country: 'Russia',
+//     city: 'Moscow'
+//   }
+// };
 // const {
 //   name: firstName = `The name isn't found`,
 //   age,
@@ -938,17 +938,34 @@ const person = {
 
 
 // console.log(name, info);
-function logPerson({name = 'Is not very founded', age}) {
-  console.log(name + ' ' + age);
-}
+// function logPerson({name = 'Is not very founded', age}) {
+//   console.log(name + ' ' + age);
+// }
+//
+// logPerson(person);
 
-logPerson(person);
+// LocalStorage - работает только со строками 5Mb, а у куки - улетает на сервер. localStorage - не улетает на сервер.
 
+const myNumber = 42;
+// localStorage.removeItem('number');
+// console.log(localStorage.getItem('number'));
+// console.log(localStorage.setItem('number', myNumber.toString()));
+// console.log(localStorage.getItem('number'));
+// localStorage.clear();
 
-
-
-
-
+const object = {
+  name: 'Max',
+  age: 20
+};
+localStorage.setItem('person', JSON.stringify(object));
+const raw = localStorage.getItem('person');
+const person = JSON.parse(raw);
+raw.name = 'Vito';
+// console.log(person);
+// =========================
+window.addEventListener('storage', event => {
+  console.log(event);
+});
 
 
 
